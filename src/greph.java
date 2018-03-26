@@ -74,9 +74,4 @@ public class greph {
 			return;
 		}
 	}
-	
-	public void output(String text) {
-		System.out.println(text);
-	}
-
 }
