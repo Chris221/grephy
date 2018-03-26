@@ -1,5 +1,7 @@
 
 public class greph {
+import java.util.Arrays;
+
 
 	public String nfaName;
 	public String dfaName;
@@ -21,36 +23,48 @@ public class greph {
 			debug("Current parameter: " + args[i]);
 			try {
 				if (args[i].equals("-r")) {
-					if ((args[i+1].equals("-d")) || (args[i+1].equals("-n")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+					if ((i+1) == args.length) {
 						output("ERROR: The RegEx argument is missing from the function call.");
-						return;
+						error++;
+					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-d")) || (args[i+1].equals("-n")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+						output("ERROR: The RegEx argument is missing from the function call.");
+						error++;
 					} else {
 						debug("Setting RegEx to " + args[i+1]);
 						regEx = args[i+1];
 						i++;
 					}
 				} else if (args[i].equals("-f")) {
-					if ((args[i+1].equals("-d")) || (args[i+1].equals("-n")) || (args[i+1].equals("-r")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+					if ((i+1) == args.length) {
 						output("ERROR: The input file argument is missing from the function call.");
-						return;
+						error++;
+					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-d")) || (args[i+1].equals("-n")) || (args[i+1].equals("-r")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+						output("ERROR: The input file argument is missing from the function call.");
+						error++;
 					} else {
 						debug("Setting the input file to " + args[i+1]);
 						inputFile = args[i+1];
 						i++;
 					}
 				} else if (args[i].equals("-n")) {
-					if ((args[i+1].equals("-d")) || (args[i+1].equals("-r")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+					if ((i+1) == args.length) {
 						output("ERROR: The NFA file name argument is missing from the function call.");
-						return;
+						error++;
+					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-d")) || (args[i+1].equals("-r")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+						output("ERROR: The NFA file name argument is missing from the function call.");
+						error++;
 					} else {
 						debug("Setting NFA output file name to " + args[i+1]);
 						nfaName = args[i+1];
 						i++;
 					}
 				} else if (args[i].equals("-d")) {
-					if ((args[i+1].equals("-r")) || (args[i+1].equals("-n")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+					if ((i+1) == args.length) {
 						output("ERROR: The DFA file name argument is missing from the function call.");
-						return;
+						error++;
+					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-r")) || (args[i+1].equals("-n")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
+						output("ERROR: The DFA file name argument is missing from the function call.");
+						error++;
 					} else {
 						debug("Setting DFA output file name to " + args[i+1]);
 						dfaName = args[i+1];
@@ -67,6 +81,9 @@ public class greph {
 						+  "-h -help           -- Brings up this help menu\n"
 						+  "-debug             -- Enables debug mode\n");
 					return;
+				} else {
+					output("ERROR: Parameter '" + args[i] + "' does not excist.");
+					error++;
 				}
 			} catch (Exception e) {
 				
