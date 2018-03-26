@@ -92,14 +92,18 @@ import java.util.Arrays;
 		boolean pass = true;
 		if (regEx == null) {
 			output("ERROR: A RegEx is required. -r 'RegEx'");
+			error++;
 			pass = false;
 		}
 		if (inputFile == null) {
 			output("ERROR: An input file is required. -f 'input file'");
+			error++;
 			pass = false;
 		}
-		if (!pass) {
+		if (error > 0) {
+			output("Grephy failed to start");
 			return;
 		}
+		output("Grephy loaded...");
 	}
 }
