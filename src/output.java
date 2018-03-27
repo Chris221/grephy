@@ -16,7 +16,7 @@ public class output {
 	 */
 	public void debug(String text) {
 		if (debug) {
-			output("Debugger: " + text);
+			output(ConsoleColors.CYAN_BOLD + "Debugger: " + ConsoleColors.RESET + text);
 		}
 	}
 	
@@ -24,7 +24,7 @@ public class output {
 	 * For outputting errors to the console
 	 */
 	public void error(String text) {
-		output("ERROR: " + text);
+		output(ConsoleColors.RED_BOLD + "ERROR: " + ConsoleColors.RED + text);
 		error++;
 	}
 	
@@ -32,7 +32,7 @@ public class output {
 	 * For outputting warnings to the console
 	 */
 	public void warning(String text) {
-		output("Warning: " + text);
+		output(ConsoleColors.YELLOW_BOLD + "Warning: " + ConsoleColors.YELLOW + text);
 		warning++;
 	}
 	
@@ -41,10 +41,10 @@ public class output {
 	 */
 	@SuppressWarnings("all")
 	public void output(String text) {
-		System.out.println(dtf.format(now) + ": " + text);
+		System.out.println(ConsoleColors.BLACK_BOLD + dtf.format(now) + ": " + ConsoleColors.RESET + text + ConsoleColors.RESET);
 	}
 	@SuppressWarnings("all")
 	public void output(int text) {
-		System.out.println(dtf.format(now) + ": " + text);
+		System.out.println(ConsoleColors.BLACK_BOLD + dtf.format(now) + ": " + ConsoleColors.RESET + text + ConsoleColors.RESET);
 	}
 }

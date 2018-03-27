@@ -76,13 +76,14 @@ public class greph extends output{
 				} else if (args[i].equals("-debug")) {
 					//holds the debug parameter slot
 				} else if ((args[i].equals("-h")) || args[i].equals("-help")) {
-					output("Grephy\n"
-						+  "-r 'RegEx'         -- The input RegEx (required)\n"
-						+  "-f 'input file'    -- The input file the RegEx will check (required)\n"
-						+  "-n 'nfa file name' -- The name of the nfa output file (optinal)\n"
-						+  "-d 'dfa file name' -- The name of the dfa output file (optinal)\n"
-						+  "-h -help           -- Brings up this help menu\n"
-						+  "-debug             -- Enables debug mode\n");
+					output(ConsoleColors.BLACK_BOLD + "Grephy\n"
+						+  ConsoleColors.CYAN_BOLD + "-r " +  ConsoleColors.BLACK_BOLD + "\"RegEx\"         " + ConsoleColors.RESET + "-- The input RegEx (" +  ConsoleColors.BLACK_BOLD + "required" + ConsoleColors.RESET + ")\n"
+						+  ConsoleColors.CYAN_BOLD + "-f " +  ConsoleColors.BLACK_BOLD + "\"input file\"    " + ConsoleColors.RESET + "-- The input file the RegEx will check (" +  ConsoleColors.BLACK_BOLD + "required" + ConsoleColors.RESET + ")\n"
+						+  ConsoleColors.CYAN_BOLD + "-n " +  ConsoleColors.BLACK_BOLD + "\"nfa file name\" " + ConsoleColors.RESET + "-- The name of the nfa output file (" +  ConsoleColors.YELLOW_BOLD + "optinal" + ConsoleColors.RESET + ")\n"
+						+  ConsoleColors.CYAN_BOLD + "-d " +  ConsoleColors.BLACK_BOLD + "\"dfa file name\" " + ConsoleColors.RESET + "-- The name of the dfa output file (" +  ConsoleColors.YELLOW_BOLD + "optinal" + ConsoleColors.RESET + ")\n"
+						+  ConsoleColors.CYAN_BOLD + "-h -help           " + ConsoleColors.RESET + "-- Brings up this help menu\n"
+						+  ConsoleColors.CYAN_BOLD + "-debug             " + ConsoleColors.RESET + "-- Enables debug mode\n");
+					error++;
 					return;
 				} else {
 					error("Parameter '" + args[i] + "' does not excist.");
@@ -98,9 +99,9 @@ public class greph extends output{
 			error("An input file is required. -f 'input file'");
 		}
 		if (error > 0) {
-			output("Grephy failed to start");
+			output(ConsoleColors.BLACK_BOLD + "Grephy failed to start");
 			return;
 		}
-		output("Grephy loaded...");
+		output(ConsoleColors.BLACK_BOLD + "Grephy loaded...");
 	}
 }
