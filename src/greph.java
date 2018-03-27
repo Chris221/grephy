@@ -7,12 +7,21 @@ public class greph extends output{
 	public String inputFile = null;
 	public String regEx = null;
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		greph grephy = new greph(args);
+		FileLoader input;
+		RegEx reg;
 		if (grephy.error == 0) {
-			FileLoader input = new FileLoader(grephy.inputFile, grephy.debug);
-			//input.language
+			input = new FileLoader(grephy.inputFile, grephy.debug);
 			//input.file
+		} else {
+			return;
+		}
+		if (input.error == 0) {
+			reg = new RegEx(grephy.regEx, grephy.debug, input.language);
+		} else {
+			return;
 		}
 	}
 	
