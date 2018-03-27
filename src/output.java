@@ -9,6 +9,7 @@ public class output {
 	public DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 	public LocalDateTime now = LocalDateTime.now(); 
 	public int error = 0;
+	public int warning = 0;
 	
 	/*
 	 * For outputting debug information to the console
@@ -25,6 +26,14 @@ public class output {
 	public void error(String text) {
 		output("ERROR: " + text);
 		error++;
+	}
+	
+	/*
+	 * For outputting warnings to the console
+	 */
+	public void warning(String text) {
+		output("Warning: " + text);
+		warning++;
 	}
 	
 	/*
