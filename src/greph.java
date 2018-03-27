@@ -13,7 +13,6 @@ public class greph extends output{
 	}
 	
 	public greph(String[] args) {
-		int error = 0;
 		if (Arrays.asList(args).contains("-debug")) {
 			debug = true;
 			debug("Enabling Debug mode...");
@@ -23,11 +22,9 @@ public class greph extends output{
 			try {
 				if (args[i].equals("-r")) {
 					if ((i+1) == args.length) {
-						output("ERROR: The RegEx argument is missing from the function call.");
-						error++;
+						error("The RegEx argument is missing from the function call.");
 					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-d")) || (args[i+1].equals("-n")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
-						output("ERROR: The RegEx argument is missing from the function call.");
-						error++;
+						error("The RegEx argument is missing from the function call.");
 					} else {
 						debug("Setting RegEx to " + args[i+1]);
 						regEx = args[i+1];
@@ -35,11 +32,9 @@ public class greph extends output{
 					}
 				} else if (args[i].equals("-f")) {
 					if ((i+1) == args.length) {
-						output("ERROR: The input file argument is missing from the function call.");
-						error++;
+						error("The input file argument is missing from the function call.");
 					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-d")) || (args[i+1].equals("-n")) || (args[i+1].equals("-r")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
-						output("ERROR: The input file argument is missing from the function call.");
-						error++;
+						error("The input file argument is missing from the function call.");
 					} else {
 						debug("Setting the input file to " + args[i+1]);
 						inputFile = args[i+1];
@@ -47,11 +42,9 @@ public class greph extends output{
 					}
 				} else if (args[i].equals("-n")) {
 					if ((i+1) == args.length) {
-						output("ERROR: The NFA file name argument is missing from the function call.");
-						error++;
+						error("The NFA file name argument is missing from the function call.");
 					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-d")) || (args[i+1].equals("-r")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
-						output("ERROR: The NFA file name argument is missing from the function call.");
-						error++;
+						error("The NFA file name argument is missing from the function call.");
 					} else {
 						debug("Setting NFA output file name to " + args[i+1]);
 						nfaName = args[i+1];
@@ -59,11 +52,9 @@ public class greph extends output{
 					}
 				} else if (args[i].equals("-d")) {
 					if ((i+1) == args.length) {
-						output("ERROR: The DFA file name argument is missing from the function call.");
-						error++;
+						error("The DFA file name argument is missing from the function call.");
 					} else if ((args[i+1].equals("-debug")) || (args[i+1].equals("-r")) || (args[i+1].equals("-n")) || (args[i+1].equals("-f")) || (args[i+1].equals("-h")) || (args[i+1].equals("-help"))) {
-						output("ERROR: The DFA file name argument is missing from the function call.");
-						error++;
+						error("The DFA file name argument is missing from the function call.");
 					} else {
 						debug("Setting DFA output file name to " + args[i+1]);
 						dfaName = args[i+1];
@@ -81,23 +72,17 @@ public class greph extends output{
 						+  "-debug             -- Enables debug mode\n");
 					return;
 				} else {
-					output("ERROR: Parameter '" + args[i] + "' does not excist.");
-					error++;
+					error("Parameter '" + args[i] + "' does not excist.");
 				}
 			} catch (Exception e) {
 				
 			}
 		}
-		boolean pass = true;
 		if (regEx == null) {
-			output("ERROR: A RegEx is required. -r 'RegEx'");
-			error++;
-			pass = false;
+			error("A RegEx is required. -r 'RegEx'");
 		}
 		if (inputFile == null) {
-			output("ERROR: An input file is required. -f 'input file'");
-			error++;
-			pass = false;
+			error("An input file is required. -f 'input file'");
 		}
 		if (error > 0) {
 			output("Grephy failed to start");
