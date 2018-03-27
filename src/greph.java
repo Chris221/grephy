@@ -8,8 +8,12 @@ public class greph extends output{
 	public String regEx = null;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		greph grephy = new greph(args);
+		if (grephy.error == 0) {
+			FileLoader input = new FileLoader(grephy.inputFile, grephy.debug);
+			//input.language
+			//input.file
+		}
 	}
 	
 	public greph(String[] args) {
