@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class greph extends output {
 
@@ -21,6 +23,8 @@ public class greph extends output {
 		}
 		if (input.error == 0) {
 			reg = new RegEx(grephy.regEx, grephy.debug, input.language);
+			NFADot nfa = new NFADot(grephy.nfaName, reg.tokenList, grephy.debug);
+			DFADot dfa = new DFADot(grephy.dfaName, reg.tokenList, grephy.debug);
 		} else {
 			return;
 		}
@@ -63,6 +67,8 @@ public class greph extends output {
 		boolean skip;
 		int p;
 		char c = ' ';
+		List<Integer> posStore = new ArrayList<Integer>();
+		List<String> parStore = new ArrayList<String>();
 		if (line.length() > 0) {
 			debug("Line: " + line);
 			c = line.charAt(0);
@@ -83,8 +89,46 @@ public class greph extends output {
 			} else if (cT == "Plus") {
 				skip = true;
 			} else if (cT == "Left_Parenthesis") {
+				int count = 0;
+				posStore.add(p);
+				for (int n = p; n < reg.length; n++) {
+					if (reg[n] == "Left_Parenthesis") {
+						count++;
+					} else if (reg[n] == "Right_Parenthesis") {
+						count--;
+						try {
+							if ((reg[n+1] == "Asterisk" || reg[n+1] == "Plus") && count == 0) {
+								parStore.add(""+(n+1));
+								parStore.add(reg[n+1]);
+							}
+						} catch (ArrayIndexOutOfBoundsException e) {
+						}
+					}
+				}
 				skip = true;
 			} else if (cT == "Right_Parenthesis") {
+				if (parStore.get(parStore.size()-1) == "Plus") {
+					parStore.remove(parStore.size()-1);
+					parStore.add("Asterisk");
+				}
+				if (next == "Asterisk" || next == "Plus") {
+					parStore.remove(parStore.size()-1);
+					try {
+						if (line.isEmpty()) {
+							next = "none";
+							break;
+						} else if (reg[p+2] != reg[posStore.get(posStore.size()-1)]) {
+							posStore.remove(posStore.size()-1);
+						} else {
+							p = posStore.get(posStore.size()-1);
+							posStore.remove(posStore.size()-1);
+						}
+					} catch (ArrayIndexOutOfBoundsException e) {
+						posStore.remove(posStore.size()-1);
+					}
+				} else {
+					posStore.remove(posStore.size()-1);
+				}
 				skip = true;
 			} else {
 				tempID = cT.charAt(0);
@@ -134,6 +178,16 @@ public class greph extends output {
 					} else {
 						c = ' ';
 					}
+				} else if (parStore.size() > 0) {
+					if (parStore.get(parStore.size()-1) == "Asterisk") {
+						parStore.remove(parStore.size()-1);
+						p = Integer.parseInt(parStore.get(parStore.size()-1));
+						parStore.remove(parStore.size()-1);
+					} else {
+						debug("Expected " + tempID + " found " + c);
+						next = "failed";
+						break;
+					}
 				} else {
 					debug("Expected " + tempID + " found " + c);
 					next = "failed";
@@ -145,6 +199,7 @@ public class greph extends output {
 		}
 		debug("Currnet Line: " + line);
 		debug("RegEx position: " + (p) + "/" + reg.length);
+		debug("next: " + next);
 		if (next.equals("none") && (line.length() < 1) && (c == ' ')) {
 			return true;
 		} else {
@@ -190,7 +245,7 @@ public class greph extends output {
 						error("The NFA file name argument is missing from the function call.");
 					} else {
 						debug("Setting NFA output file name to " + args[i+1]);
-						nfaName = args[i+1];
+						nfaName = args[i+1] + ".txt";
 						i++;
 					}
 				} else if (args[i].equals("-d")) {
@@ -200,7 +255,7 @@ public class greph extends output {
 						error("The DFA file name argument is missing from the function call.");
 					} else {
 						debug("Setting DFA output file name to " + args[i+1]);
-						dfaName = args[i+1];
+						dfaName = args[i+1] + ".txt";
 						i++;
 					}
 				} else if (args[i].equals("-debug")) {
@@ -221,6 +276,16 @@ public class greph extends output {
 			} catch (Exception e) {
 				
 			}
+		}
+		if (dfaName == null) {
+			dfaName = "DFA.txt";
+		} else if (dfaName.isEmpty()) {
+			dfaName = "DFA.txt";
+		}
+		if (nfaName == null) {
+			nfaName = "NFA.txt";
+		} else if (nfaName.isEmpty()) {
+			nfaName = "NFA.txt";
 		}
 		if (regEx == null) {
 			error("A RegEx is required. -r 'RegEx'");
