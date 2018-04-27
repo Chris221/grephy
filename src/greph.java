@@ -112,13 +112,14 @@ public class greph extends output {
 					parStore.add("Asterisk");
 				}
 				if (next == "Asterisk" || next == "Plus") {
-					parStore.remove(parStore.size()-1);
+					//parStore.remove(parStore.size()-1);
 					try {
 						if (line.isEmpty()) {
-							next = "none";
-							break;
-						} else if (reg[p+2] != reg[posStore.get(posStore.size()-1)]) {
-							posStore.remove(posStore.size()-1);
+							try {
+								next = reg[p+1];
+							} catch (ArrayIndexOutOfBoundsException e) {
+								next = "none";
+							}
 						} else {
 							p = posStore.get(posStore.size()-1);
 							posStore.remove(posStore.size()-1);
