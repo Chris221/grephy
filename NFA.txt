@@ -1,0 +1,8 @@
+digraph NFA {
+q0;
+q0 -> q1  [label="a"];
+q1 -> q2  [label="b"];
+q2 -> q0  [label="e"];
+q2 -> q3  [label="c"];
+q3 [peripheries=2];
+ }
