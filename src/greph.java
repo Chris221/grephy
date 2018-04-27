@@ -67,6 +67,9 @@ public class greph extends output {
 					} else {
 						debug("Setting RegEx to " + args[i+1]);
 						regEx = args[i+1];
+						if (regEx.contains(" ")) {
+							error("The RegEx cannot contain spaces.");
+						}
 						i++;
 					}
 				} else if (args[i].equals("-f")) {
