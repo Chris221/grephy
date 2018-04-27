@@ -54,7 +54,7 @@ public class greph extends output {
 				grephy.output("Line [" + input.file[i] + "] " + passText);
 			}
 			grephy.output("Grephy finished processing the file");
-			grephy.debug("Processed File: " + Arrays.toString(grephy.processedFile));
+			grephy.output("Processed File: " + Arrays.toString(grephy.processedFile));
 		} else {
 			return;
 		}
