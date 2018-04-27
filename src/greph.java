@@ -71,6 +71,27 @@ public class greph extends output {
 			debug("Checking: " + c);
 		}
 		for (p = 0; p < reg.length; p++) {
+			String cT = reg[p];
+			try {
+				next = reg[p+1];
+			} catch (ArrayIndexOutOfBoundsException e) {
+				next = "none";
+			}
+			debug("Token Array location: " + reg[p]);
+			debug("Next token: " + next);
+			if (cT == "Asterisk") {
+				skip = true;
+			} else if (cT == "Plus") {
+				skip = true;
+			} else if (cT == "Left_Parenthesis") {
+				skip = true;
+			} else if (cT == "Right_Parenthesis") {
+				skip = true;
+			} else {
+				tempID = cT.charAt(0);
+				skip = false;
+				debug("ID to check was set to " + tempID);
+			}
 		}
 		debug("Currnet Line: " + line);
 		debug("RegEx position: " + (p) + "/" + reg.length);
