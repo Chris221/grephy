@@ -1,11 +1,13 @@
 import java.util.Arrays;
 
 public class greph extends output{
+public class greph extends output {
 
 	public String nfaName;
 	public String dfaName;
 	public String inputFile = null;
 	public String regEx = null;
+	public String[] processedFile;
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
@@ -25,6 +27,30 @@ public class greph extends output{
 		}
 	}
 	
+	public boolean process(String line, String[] reg) {
+		debug("Evaluating line: " + line);
+		char tempID = ' ';
+		String next = "none";
+		boolean skip;
+		int p;
+		char c = ' ';
+		if (line.length() > 0) {
+			debug("Line: " + line);
+			c = line.charAt(0);
+			line = line.substring(1);
+			debug("Checking: " + c);
+		}
+		for (p = 0; p < reg.length; p++) {
+		}
+		debug("Currnet Line: " + line);
+		debug("RegEx position: " + (p) + "/" + reg.length);
+		if (next.equals("none") && (line.length() < 1) && (c == ' ')) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public greph(String[] args) {
 		if (Arrays.asList(args).contains("-debug")) {
 			debug = true;
