@@ -66,11 +66,12 @@ public class RegEx extends output {
 		    	} else {
 			    	addTo("Asterisk");
 		    	}
-		    } else if ("abcdefghijklmnopqrstuvwxyz".indexOf(c) >= 0) {
+		    } else /*if ("abcdefghijklmnopqrstuvwxyz".indexOf(c) >= 0) {
 		    	addTo("" + c);
-			} else {
-				error("Unsupported character found in the RegEx '" + c + "'");
-				return;
+			} else*/ {
+				/*error("Unsupported character found in the RegEx '" + c + "'");
+				return;*/
+		    	addTo("" + c);
 			}
 		}
 		if (parenthesis != 0) {
