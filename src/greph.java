@@ -44,7 +44,7 @@ public class greph extends output {
 			grephy.processedFile = new String[input.file.length];
 			String passText;
 			for (int i = 0; i < input.file.length; i++) {
-				boolean pass = grephy.process(input.file[i], reg.tokenList);
+				boolean pass = grephy.process(input.file[i]+" ", reg.tokenList);
 				if (pass) {
 					passText = "Passed";
 				} else {
@@ -122,10 +122,12 @@ public class greph extends output {
 							}
 						} else {
 							p = posStore.get(posStore.size()-1);
-							posStore.remove(posStore.size()-1);
 						}
 					} catch (ArrayIndexOutOfBoundsException e) {
-						posStore.remove(posStore.size()-1);
+						try {
+							posStore.remove(posStore.size()-1);
+						} catch (ArrayIndexOutOfBoundsException e2) {
+						}
 					}
 				} else {
 					posStore.remove(posStore.size()-1);
