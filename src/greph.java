@@ -25,6 +25,18 @@ public class greph extends output {
 		} else {
 			return;
 		}
+		if (reg.error == 0) {
+			grephy.debug("Checking the language");
+			for (int r = 0; r < reg.tokenList.length; r++) {
+				if (reg.tokenList[r] != "Asterisk" && reg.tokenList[r] != "Plus" 
+						&& reg.tokenList[r] != "Left_Parenthesis" && reg.tokenList[r] != "Right_Parenthesis") {
+					grephy.debug("Checking the langauge for: " + reg.tokenList[r]);
+					if (!(new String(input.language).contains(reg.tokenList[r]))) {
+						reg.error("The RegEx contains a character [" + reg.tokenList[r] + "] not in the language");
+					}
+				} 
+			}
+		}
 	}
 	
 	public boolean process(String line, String[] reg) {
