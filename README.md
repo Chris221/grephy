@@ -37,7 +37,7 @@ All other characters or symbols may be used in the test file or language.
 
 **negative.txt** a multi-line file that **does NOT** matches any particular expression _Looks like it would take (ab)*_
 
-**t.txt** a very large and inclusive file, no set expression matches
+**t.txt** a very large and inclusive file, no set expression matches; _a*b*c* is a good mix of pass/fails_
 
 **t2.txt** a simpler test file was used to test _(ab)*_ and _(ab)*c_
 
