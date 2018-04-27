@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-public class greph extends output{
 public class greph extends output {
 
 	public String nfaName;
