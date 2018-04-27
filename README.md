@@ -14,5 +14,10 @@ java -jar Grephy.jar -r a*b -f _"Input file.txt"_
 
 _Parameters Order is not important_
 
+### Test Files
+**simple.txt** a simple single line file that matches _(ab)*_
+**multiple.txt** a multi-line file that matches _a*_ or _(a)*_
+**negative.txt** a multi-line file that does not matches any particular expression _Looks like it would take (ab)*_
+
 ## Online DOT viewer
 https://dreampuf.github.io/GraphvizOnline/
