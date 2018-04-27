@@ -37,6 +37,24 @@ public class greph extends output {
 				} 
 			}
 		}
+		if (reg.error == 0) {
+			grephy.processedFile = new String[input.file.length];
+			String passText;
+			for (int i = 0; i < input.file.length; i++) {
+				boolean pass = grephy.process(input.file[i], reg.tokenList);
+				if (pass) {
+					passText = "Passed";
+				} else {
+					passText = "Failed";
+				}
+				grephy.processedFile[i] = passText;
+				grephy.output("Line [" + input.file[i] + "] " + passText);
+			}
+			grephy.output("Grephy finished processing the file");
+			grephy.debug("Processed File: " + Arrays.toString(grephy.processedFile));
+		} else {
+			return;
+		}
 	}
 	
 	public boolean process(String line, String[] reg) {
