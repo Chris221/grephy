@@ -1,0 +1,12 @@
+RegEx: null
+PASSED: #$@
+PASSED: ##$$@
+PASSED: ############$$$$@
+PASSED: #$$$$$$$$$$$$$$$@
+PASSED: #####$@
+PASSED: $$$$$$$$$@
+PASSED: ####@
+PASSED: #@
+PASSED: $@
+PASSED: @
+
