@@ -20,7 +20,7 @@ java -jar Grephy.jar -r _"RegEx"_ -f _"Input file.txt"_
 _Parameter Order is not important_
 
 ### RegEx Reserved Symbols
-***** Asterisk, or _Splat_, means the proceeding character or list of characters does not have to be there but may repeat; **0 or more times**
+**&#42;** Asterisk, or _Splat_, means the proceeding character or list of characters does not have to be there but may repeat; **0 or more times**
 
 
 **+** Plus means the proceeding character or list of characters must be there but may repeat; **1 or more times**
