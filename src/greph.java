@@ -92,6 +92,57 @@ public class greph extends output {
 				skip = false;
 				debug("ID to check was set to " + tempID);
 			}
+			if (!skip) {
+				if (next == "Asterisk") {
+					while (tempID == c) {
+						debug("Found: " + tempID);
+						if (line.length() > 0) {
+							debug("Line: " + line);
+							c = line.charAt(0);
+							line = line.substring(1);
+							debug("Checking: " + c);
+						} else {
+							c = ' ';
+							break;
+						}
+					}
+				} else if (next == "Plus") {
+					if (tempID == c) {
+						while (tempID == c) {
+							debug("Found: " + tempID);
+							if (line.length() > 0) {
+								debug("Line: " + line);
+								c = line.charAt(0);
+								line = line.substring(1);
+								debug("Checking: " + c);
+							} else {
+								c = ' ';
+								break;
+							}
+						}
+					} else {
+						debug("Expected " + tempID + " found " + c);
+						next = "failed";
+						break;
+					}
+				} else if (tempID == c) {
+					debug("Found: " + tempID);
+					if (line.length() > 0) {
+						debug("Line: " + line);
+						c = line.charAt(0);
+						line = line.substring(1);
+						debug("Checking: " + c);
+					} else {
+						c = ' ';
+					}
+				} else {
+					debug("Expected " + tempID + " found " + c);
+					next = "failed";
+					break;
+				}
+			} else {
+				debug("Skipping the check becuase of the " + cT);
+			}
 		}
 		debug("Currnet Line: " + line);
 		debug("RegEx position: " + (p) + "/" + reg.length);
