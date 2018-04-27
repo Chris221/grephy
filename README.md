@@ -43,7 +43,7 @@ All other characters or symbols may be used in the test file or language.
 
 **numbers.txt** a test file for testing numbers that matches _1*01_
 
-**fun.txt** a test file for testing symbols that matches _#*$*@_
+**fun.txt** a test file for testing symbols that matches _#*^*@_
 
 ## Online DOT viewer
 https://dreampuf.github.io/GraphvizOnline/
