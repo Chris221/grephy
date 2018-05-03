@@ -46,13 +46,20 @@ public class greph extends output {
 			String passText;
 			for (int i = 0; i < input.file.length; i++) {
 				boolean pass = grephy.process(input.file[i]+" ", reg.tokenList);
+					//set the pass text to green and sets the pass text for the array
+					passText = "" + ConsoleColors.GREEN + "Passed" + ConsoleColors.RESET;
+					passTextA = "Passed";
+					//set the failed text to red and sets the failed text for the array
+					passText = "" + ConsoleColors.RED + "Failed" + ConsoleColors.RESET;
+					passTextA = "Failed";
+				grephy.processedFile[i] = passTextA;
 				if (pass) {
-					passText = "Passed";
+					//output
+					grephy.output("Line [" + input.file[i] + "] " + passText);
 				} else {
-					passText = "Failed";
+					//debug
+					grephy.debug("Line [" + input.file[i] + "] " + passText);
 				}
-				grephy.processedFile[i] = passText;
-				grephy.output("Line [" + input.file[i] + "] " + passText);
 			}
 			grephy.output("Grephy finished processing the file");
 			WriteFile passFail = new WriteFile(grephy.completedName, grephy.processedFile, input.file, grephy.regEx, grephy.debug);
