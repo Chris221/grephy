@@ -3,18 +3,23 @@
 ## How to run
 java -jar Grephy.jar -r _"RegEx"_ -f _"Input file.txt"_
 
+#### Example
+java -jar Grephy.jar -r _"(ab)*"_ -f _"simple.txt"_
+
 ### Parameters
-**-r** _"RegEx"_         -- The input RegEx (**required**)
+**-r** _"RegEx"_               -- The input RegEx (**required**)
 
-**-f** _"input file"_    -- The input file the RegEx will check (**required**)
+**-f** _"input file.txt"_      -- The input file the RegEx will check (**required**)
 
-**-n** _"nfa file name"_ -- The name of the nfa output file (_optinal_)
+**-n** _"nfa file name"_       -- The name of the nfa output file (_optinal_)
 
-**-d** _"dfa file name"_ -- The name of the dfa output file (_optinal_)
+**-d** _"dfa file name"_       -- The name of the dfa output file (_optinal_)
 
-**-h** **-help**         -- Brings up this help menu
+**-c** _"completed file name"_ -- The name of the completed test file (_optinal_)
 
-**-debug**               -- Enables debug mode
+**-h** **-help**               -- Brings up this help menu
+
+**-debug**                     -- Enables debug mode
 
 
 _Parameter Order is not important_
