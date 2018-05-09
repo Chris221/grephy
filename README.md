@@ -24,7 +24,7 @@ java -jar Grephy.jar -r _"(ab)*"_ -f _"simple.txt"_
 
 _Parameter Order is not important_
 
-### RegEx Reserved Symbols
+## RegEx Reserved Symbols
 **&#42;** Asterisk, or _Splat_, means the proceeding character or list of characters does not have to be there but may repeat; **0 or more times**
 
 
@@ -35,7 +35,7 @@ _Parameter Order is not important_
 
 All other characters or symbols may be used in the test file or language.
 
-### Test Files
+## Test Files
 **simple.txt** a simple single line file that matches _(ab)*_
 
 **multiple.txt** a multi-line file that matches _a*_ or _(a)*_
