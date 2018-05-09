@@ -51,13 +51,13 @@ All other characters or symbols may be used in the test file or language.
 **fun.txt** a test file for testing symbols that matches _#*^*@_
 
 ## Download
-[]:https://github.com/Chris221/grephy/releases
+[]: https://github.com/Chris221/grephy/releases
 
 ## GitHub Repository
-[]:https://github.com/Chris221/grephy
+[]: https://github.com/Chris221/grephy
 
 ## Online DOT viewer
-[]:https://dreampuf.github.io/GraphvizOnline/
+[]: https://dreampuf.github.io/GraphvizOnline/
 
 ## Project File
-[]:https://github.com/Chris221/grephy/blob/master/Project.pdf
+[]: https://github.com/Chris221/grephy/blob/master/Project.pdf
